@@ -21,6 +21,7 @@ class Products extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
+    protected $fillable = ['name','price','categories_id'];
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
@@ -36,7 +37,10 @@ class Products extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    public function categories()
+    {
+        return $this->belongsTo(Categories::class,'categories_id','id');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

@@ -36,7 +36,10 @@ class Categories extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    public function product()
+    {
+        return $this->hasMany(product::class);
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES
