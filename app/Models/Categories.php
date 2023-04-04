@@ -36,9 +36,9 @@ class Categories extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function product()
+    public function posts()
     {
-        return $this->hasOne(product::class);
+        return $this->hasMany(posts:: class);
     }
     /*
     |--------------------------------------------------------------------------

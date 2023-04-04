@@ -21,7 +21,7 @@ class PostsCrudController extends CrudController
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
-     * 
+     *
      * @return void
      */
     public function setup()
@@ -33,27 +33,38 @@ class PostsCrudController extends CrudController
 
     /**
      * Define what happens when the List operation is loaded.
-     * 
+     *
      * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
      * @return void
      */
     protected function setupListOperation()
     {
-        CRUD::column('title');
-        CRUD::column('content');
-        CRUD::column('created_at');
-        CRUD::column('updated_at');
-
+        $this->crud->addColumn
+        ([
+            'name' => 'id',
+        ]);
+        $this->crud->addColumn
+        ([
+            'name' => 'title',
+        ]);
+        $this->crud->addColumn
+        ([
+            'name' => 'content',
+        ]);
+        $this->crud->addColumn
+        ([
+            'name' => 'Categories',
+        ]);
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
+         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
          */
     }
 
     /**
      * Define what happens when the Create operation is loaded.
-     * 
+     *
      * @see https://backpackforlaravel.com/docs/crud-operation-create
      * @return void
      */
@@ -61,19 +72,32 @@ class PostsCrudController extends CrudController
     {
         CRUD::setValidation(PostsRequest::class);
 
-        CRUD::field('title');
-        CRUD::field('content');
+        $this->crud->addField([
+            'name' => 'title',
+            'type' => 'text',
+            'label' => 'Title',
+        ]);
+        $this->crud->addField([
+            'name' => 'content',
+            'type' => 'text',
+            'label' => 'Content',
+        ]);
+        $this->crud->addField([
+            'name' => 'categories',
+            'type' => 'select',
+            'label' => 'Categories',
+        ]);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
+         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
          */
     }
 
     /**
      * Define what happens when the Update operation is loaded.
-     * 
+     *
      * @see https://backpackforlaravel.com/docs/crud-operation-update
      * @return void
      */

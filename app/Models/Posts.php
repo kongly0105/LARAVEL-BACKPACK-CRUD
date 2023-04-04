@@ -18,12 +18,14 @@ class Posts extends Model
     */
 
     protected $table = 'posts';
-    // protected $primaryKey = 'id';
-    // public $timestamps = false;
+    // protected $primaryKey = 'id'
+    // public $timestamps = false
     protected $guarded = ['id'];
-    // protected $fillable = [];
-    // protected $hidden = [];
-    // protected $dates = [];
+    protected $fillable = [
+        'title', 'content', 'categories_id'
+    ];
+    // protected $hidden = []
+    // protected $dates = []
 
     /*
     |--------------------------------------------------------------------------
@@ -36,7 +38,10 @@ class Posts extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    public function categories()
+    {
+        return $this->belongsTo(Categories::class, 'categories_id', 'id');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES
