@@ -40,9 +40,20 @@ class CategoriesCrudController extends CrudController
     protected function setupListOperation()
     {
 
-        // $this->crud->setColumns(['name']);
+        $this->crud->addColumns
+        ([
+            'name' => 'id',
+        ]);
 
-        CRUD::addColumn(['name' => 'name', 'type' => 'text']);
+
+        $this->crud->addColumn
+        ([
+            'name' => 'title',
+        ]);
+        $this->crud->addColumn
+        ([
+            'name' => 'descriptions',
+        ]);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -61,13 +72,16 @@ class CategoriesCrudController extends CrudController
     {
         CRUD::setValidation(CategoriesRequest::class);
 
-        CRUD::field('name');
-
-        // $this->crud->addField([
-        //     'name' => 'name',
-        //     'type' => 'text',
-        //     // 'label' => 'Name'
-        // ]);
+        $this->crud->addField([
+            'name' => 'title',
+            'type' => 'text',
+            'label' => 'Title',
+        ]);
+        $this->crud->addField([
+            'name' => 'descriptions',
+            'type' => 'text',
+            'label' => 'Descriptions',
+        ]);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

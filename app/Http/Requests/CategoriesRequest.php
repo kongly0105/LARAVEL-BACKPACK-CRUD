@@ -25,7 +25,7 @@ class CategoriesRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:5|max:255'
+            'title' => 'required|min:5|max:255'
         ];
     }
 
@@ -49,7 +49,7 @@ class CategoriesRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Please provide valid name which is between 5 and 255 characters.'
+            'title.required' => 'Please provide valid name which is between 5 and 255 characters.'
         ];
     }
 }
