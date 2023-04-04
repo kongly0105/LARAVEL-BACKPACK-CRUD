@@ -18,13 +18,13 @@ class Products extends Model
     */
 
     protected $table = 'products';
-    // protected $primaryKey = 'id';
-    // public $timestamps = false;
+    // protected $primaryKey = 'id'
+    // public $timestamps = false
     protected $guarded = ['id'];
     protected $fillable = ['name','price','categories_id'];
-    // protected $fillable = [];
-    // protected $hidden = [];
-    // protected $dates = [];
+    // protected $fillable = []
+    // protected $hidden = []
+    // protected $dates = []
 
     /*
     |--------------------------------------------------------------------------
