@@ -6,7 +6,7 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categories extends Model
+class Posts extends Model
 {
     use CrudTrait;
     use HasFactory;
@@ -17,13 +17,13 @@ class Categories extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'categories';
-    // protected $primaryKey = 'id'
-    // public $timestamps = false
+    protected $table = 'posts';
+    // protected $primaryKey = 'id';
+    // public $timestamps = false;
     protected $guarded = ['id'];
-    // protected $fillable = []
-    // protected $hidden = []
-    // protected $dates = []
+    // protected $fillable = [];
+    // protected $hidden = [];
+    // protected $dates = [];
 
     /*
     |--------------------------------------------------------------------------
@@ -36,10 +36,7 @@ class Categories extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function product()
-    {
-        return $this->hasOne(product::class);
-    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
