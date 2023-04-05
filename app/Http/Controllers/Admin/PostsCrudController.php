@@ -55,6 +55,14 @@ class PostsCrudController extends CrudController
         ([
             'name' => 'Categories',
         ]);
+        $this->crud->addColumn([
+            'name' => 'posts_image',
+            'type' => 'image',
+            'prefix' => 'storage/',
+            'height' => '50px',
+            'width' => '50px',
+        ]);
+
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -86,6 +94,12 @@ class PostsCrudController extends CrudController
             'name' => 'categories',
             'type' => 'select',
             'label' => 'Categories',
+        ]);
+        $this->crud->addField([
+            'name' => 'posts_image',
+            'type' => 'select_image',
+            'label' => 'posts_image',
+            'upload' => true
         ]);
 
         /**

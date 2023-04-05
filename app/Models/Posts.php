@@ -22,7 +22,10 @@ class Posts extends Model
     // public $timestamps = false
     protected $guarded = ['id'];
     protected $fillable = [
-        'title', 'content', 'categories_id'
+        'title',
+        'content',
+        'categories_id',
+        'posts_image',
     ];
     // protected $hidden = []
     // protected $dates = []
@@ -32,7 +35,15 @@ class Posts extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
+    public function setPostsImageAttribute($value)
+    {
+        dd(request()->all());
+        $name = "posts_image";
+        $disk = "public";
+        $path = "/v1/images";
+        $this->uploadFileToDisk($value, $name, $disk, $path);
 
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
