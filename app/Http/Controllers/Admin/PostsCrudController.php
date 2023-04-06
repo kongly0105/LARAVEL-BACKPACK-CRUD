@@ -55,14 +55,21 @@ class PostsCrudController extends CrudController
         ([
             'name' => 'Categories',
         ]);
-        $this->crud->addColumn([
+        $this->crud->addColumn
+        ([
             'name' => 'posts_image',
             'type' => 'image',
             'prefix' => 'storage/',
             'height' => '50px',
             'width' => '50px',
         ]);
-
+        $this->crud->addColumn
+        ([
+            'name' => 'getPostsTags',
+            'type' => 'select_multiple',
+            'entity' => 'getPostsTags',
+            'label' => 'Tags'
+        ]);
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -92,8 +99,13 @@ class PostsCrudController extends CrudController
         ]);
         $this->crud->addField([
             'name' => 'categories',
-            'type' => 'select',
+            'type' => 'select2',
             'label' => 'Categories',
+        ]);
+        $this->crud->addField([
+            'name' => 'tags',
+            'type' => 'select_multiple',
+            'label' => 'Tags',
         ]);
         $this->crud->addField([
             'name' => 'posts_image',
@@ -101,6 +113,13 @@ class PostsCrudController extends CrudController
             'label' => 'posts_image',
             'upload' => true
         ]);
+
+        // $this->crud->addField([
+        //     'name' => 'postTags',
+        //     'type'  => 'hidden',
+        //     'value' => 'postTags'
+        // ]);
+
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
@@ -119,4 +138,24 @@ class PostsCrudController extends CrudController
     {
         $this->setupCreateOperation();
     }
+
+    // public function store()
+    // {
+    //     $response = $this->traitStore();
+    //     $this->crud->model->postTags()->attach(request()->tags,['post_id' => $this->crud->entry->id]);
+    //     if(request()->postTags){
+    //         $this->crud->addField(['type' => 'hidden', 'name' => 'postTags']);
+    //     }
+
+    //     return $response;
+    // }
+
+    // public function update($id)
+    // {
+    //     $response = $this->traitUpdate($id);
+    //     $post = $this->crud->model->find($id);
+    //     $post->postTags()->sync(request()->tags,['post_id' => $this->crud->entry->id]);
+    //     $post->save();
+    //     return $response;
+    // }
 }

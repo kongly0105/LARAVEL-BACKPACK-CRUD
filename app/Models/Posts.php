@@ -37,7 +37,7 @@ class Posts extends Model
     */
     public function setPostsImageAttribute($value)
     {
-        dd(request()->all());
+        // dd(request()->all());
         $name = "posts_image";
         $disk = "public";
         $path = "/v1/images";
@@ -52,6 +52,18 @@ class Posts extends Model
     public function categories()
     {
         return $this->belongsTo(Categories::class, 'categories_id', 'id');
+    }
+    public function tags()
+    {
+        return $this->belongsToMany(Tags::class);
+    }
+    // public function postTags()
+    // {
+    //     return $this->belongsToMany(self::class,'post_tag','post_id','tag_id');
+    // }
+    public function getPostsTags()
+    {
+        return $this->belongsToMany(Tags::class, 'posts_tags', 'posts_id', 'tags_id');
     }
     /*
     |--------------------------------------------------------------------------
