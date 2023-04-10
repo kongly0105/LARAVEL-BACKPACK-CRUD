@@ -36,10 +36,7 @@ class Tags extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    // public function posts()
-    // {
-    //     return $this->belongsToMany(Posts::class)
-    // }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

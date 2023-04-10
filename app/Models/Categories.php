@@ -21,7 +21,7 @@ class Categories extends Model
     // protected $primaryKey = 'id'
     // public $timestamps = false
     protected $guarded = ['id'];
-    // protected $fillable = []
+    protected $fillable = ['title'];
     // protected $hidden = []
     // protected $dates = []
 
@@ -38,7 +38,7 @@ class Categories extends Model
     */
     public function posts()
     {
-        return $this->hasMany(posts:: class);
+        return $this->hasMany(posts::class);
     }
     /*
     |--------------------------------------------------------------------------
