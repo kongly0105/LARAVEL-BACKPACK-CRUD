@@ -21,7 +21,7 @@ class Categories extends Model
     // protected $primaryKey = 'id'
     // public $timestamps = false
     protected $guarded = ['id'];
-    protected $fillable = ['title'];
+    protected $fillable = ['title', 'description'];
     // protected $hidden = []
     // protected $dates = []
 

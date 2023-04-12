@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\PostsRequest;
+use App\Models\Categories;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use App\Models\Posts;
@@ -96,6 +97,7 @@ class PostsCrudController extends CrudController
     public function custom()
     {
         $posts = Posts::get();
-        return view('admin', compact('posts'));
+        $categories = Categories::get();
+        return view('admin', compact(['posts', 'categories']));
     }
 }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Categories;
 use App\Http\Requests\CategoriesRequest;
+use App\Models\Posts;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
@@ -40,19 +42,17 @@ class CategoriesCrudController extends CrudController
     protected function setupListOperation()
     {
 
-        $this->crud->addColumns
-        ([
+        $this->crud->addColumns([
             'name' => 'id',
         ]);
 
 
-        $this->crud->addColumn
-        ([
+        $this->crud->addColumn([
             'name' => 'title',
         ]);
-        $this->crud->addColumn
-        ([
-            'name' => 'descriptions',
+
+        $this->crud->addColumn([
+            'name' => 'description',
         ]);
 
         /**
@@ -78,7 +78,7 @@ class CategoriesCrudController extends CrudController
             'label' => 'Title',
         ]);
         $this->crud->addField([
-            'name' => 'descriptions',
+            'name' => 'description',
             'type' => 'text',
             'label' => 'Descriptions',
         ]);
@@ -99,5 +99,12 @@ class CategoriesCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+    public function categoryItem($id)
+    {
+        $categories = Categories::all();
+        // $posts = Posts::where('categories_id', $id)->get()->toArray;
+        $cateId = Categories::find($id)->posts;
+        return view('items', compact('categories', 'cateId'));
     }
 }

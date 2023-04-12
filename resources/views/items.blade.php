@@ -35,40 +35,40 @@
                 </div>
             </nav>
         </div>
-            {{-- end --}}
-        <br>
-        <br>
+        {{-- end --}}
+
         <div class="container" style="margin-top: 40px;">
             <div class="row">
                 <div class="container">
-                    <img src="/image/cardbpage.jpg" alt="Sandwich" width="100%" height="280px" style="border-radius: 5px">
+                    <img src="/image/advertise.jpg" alt="Sandwich" width="100%" height="280px" style="border-radius: 5px">
                 </div>
             </div>
-
-            <div class="row" style="margin-top: 30px;">
-                @foreach ( $posts ?? '' as $post)
-                    <div class="col-lg-4">
-                        <div class="card shadow-lg border-0 rounded-lg mt-1">
-                            <div class="card-body">
-                                <div class="post">
-                                    <div class="post_pic">
-                                        <img src="{{ asset('storage/' . $post->posts_image) }}" alt="" style="height: 100%; width: 100%; border-radius: 5px" />
-                                        {{-- <li><a href="{{ URL('postId/'.$post->id.'') }}" method="GET"><img src="{{ asset('storage/' . $post->posts_image) }}" alt="" style="height: 100%; width: 100%; border-radius: 5px"></a></li> --}}
-                                    </div>
-                                    <div class="style">
-                                        <h4><b>{{ $post->title }}</b></h4>
-                                        <p>{{ $post->content }}</p>
-                                        <p style="text-decoration: none; margin-top:10px"><i class="fa fa-calendar"></i> {{$post->created_at}} <i class="fas fa-clock"></i> </p>
-                                        <p class="btn btn-warning">{{ $post->categories->title ?? '' }}</p>
-                                        @foreach ($post->tags as $tag)
-                                            <p class="btn btn-info">{{$tag->title}}</p>
-                                        @endforeach
+            <div class="row" style="margin-top: 40px;">
+                <div class="container">
+                    @foreach ($cateId as $cateId)
+                        <div class="col-lg-4">
+                            <div class="card shadow-lg border-0 rounded-lg mt-1">
+                                <div class="card-body">
+                                    <div class="post">
+                                        <div class="post_pic">
+                                            {{-- <li><a href="{{ URL('categoryItem/'.$cateId->id.'') }}" method="GET"><img src="{{ asset('storage/' . $cateId->image) }}" alt="" style="height: 100%; width: 100%; border-radius: 5px"></a></li> --}}
+                                            <img src="{{ asset('storage/' . $cateId->posts_image) }}" alt="" style="height: 100%; width: 100%; border-radius: 5px" />
+                                        </div>
+                                        <div class="style">
+                                            <h4><b>{{$cateId->title}}</b></h4>
+                                            <p>{{$cateId->content}}</p>
+                                            <p style="text-decoration: none; margin-top:10px"><i class="fa fa-calendar"></i> 28-12-2021 <i class="fas fa-clock"></i> 2 Hours</p>
+                                            <p class="btn btn-warning">{{($cateId->categories)->title}}</p>
+                                            @foreach ($cateId->tags as $tag)
+                                                <p class="btn btn-info">{{$tag->title}}</p>
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         </div>
     </body>
